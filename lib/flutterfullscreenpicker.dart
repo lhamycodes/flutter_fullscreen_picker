@@ -11,15 +11,28 @@ part 'src/flutter_fullscreen_picker_search.dart';
 
 class FlutterFullScreenPicker {
   Future openPicker({
-    BuildContext context,
-    List<SelectOption> options,
-    String appBarTitle,
+    /// BuildContext context
+    @required BuildContext context,
+
+    /// List of Select Options
+    @required List<SelectOption> options,
+
+    /// Page title
+    @required String appBarTitle,
+
+    /// Page background Color, defaults to Colors.White
     Color pageBackgroundColor,
+
+    /// Appbar title Color, defaults to Colors.black
     Color appBarTitleColor,
+
+    /// Appbar Icons Color, defaults to Colors.black
     Color appBarIconsColor,
+
+    /// Select option text Color, defaults to Colors.black
     Color optionTextColor,
   }) async {
-    Navigator.push(
+    return Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => FullScreenPicker(
@@ -35,8 +48,9 @@ class FlutterFullScreenPicker {
     ).then((value) {
       if (value != null) {
         return value;
+      } else {
+        return null;
       }
-      return null;
     });
   }
 }
