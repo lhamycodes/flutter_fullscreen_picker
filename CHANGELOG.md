@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 25th June, 2020.
 
-* TODO: Describe initial release.
+Initial release.
+Features:
+- Full Screen Picker with search functionality
