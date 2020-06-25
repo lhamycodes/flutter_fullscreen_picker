@@ -29,11 +29,10 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               "Selected Country Code : ${selectedOption.toString()}",

@@ -1,10 +1,10 @@
 part of flutterfullscreenpicker;
 
 class FullScreenPicker extends StatefulWidget {
-  /// List of Select Options
+  /// Page title
   final String pageTitle;
 
-  /// Page title
+  /// List of Select Options
   final List<SelectOption> selectOptions;
 
   /// Page background Color, defaults to Colors.White
