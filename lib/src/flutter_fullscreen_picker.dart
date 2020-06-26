@@ -7,6 +7,9 @@ class FullScreenPicker extends StatefulWidget {
   /// List of Select Options
   final List<SelectOption> selectOptions;
 
+  /// Selected Option Display
+  final SelectOption selectedOption;
+
   /// Page background Color, defaults to Colors.White
   final Color pageBackgroundColor;
 
@@ -22,6 +25,7 @@ class FullScreenPicker extends StatefulWidget {
   FullScreenPicker({
     @required this.pageTitle,
     @required this.selectOptions,
+    this.selectedOption,
     this.pageBackgroundColor = Colors.white,
     this.appBarTitleColor = Colors.black,
     this.appBarIconsColor = Colors.black,
@@ -112,13 +116,25 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            selectList[index].display,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: widget.optionTextColor,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                selectList[index].display,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: widget.optionTextColor,
+                                ),
+                              ),
+                              Icon(
+                                widget.selectedOption?.display ==
+                                        selectList[index].display
+                                    ? Icons.check
+                                    : null,
+                                color: widget.appBarIconsColor,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -205,7 +221,7 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
   }
 
   void onSelect(SelectOption option) {
-    Navigator.pop(context, option.value);
+    Navigator.pop(context, option);
   }
 
   processSelection(String value) {

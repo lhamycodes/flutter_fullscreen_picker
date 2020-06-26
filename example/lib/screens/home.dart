@@ -11,14 +11,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var selectedOption;
+  SelectOption selectedOption;
   FlutterFullScreenPicker picker = FlutterFullScreenPicker();
 
   List<SelectOption> _countryList = [
     SelectOption(display: "Nigeria", value: "NG"),
     SelectOption(display: "South Africa", value: "SA"),
     SelectOption(display: "Rwanda", value: "RW"),
-    SelectOption(display: "United States of America", value: "USA"),
+    SelectOption(display: "United States of America", value: "US"),
     SelectOption(display: "Russia", value: "RU"),
     SelectOption(display: "China", value: "CN"),
   ];
@@ -35,7 +35,14 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Selected Country Code : ${selectedOption.toString()}",
+              "Selected Country : ${selectedOption?.display}",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Selected Country Code : ${selectedOption?.value.toString()}",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
@@ -49,6 +56,7 @@ class _HomeState extends State<Home> {
                   context: context,
                   options: _countryList,
                   pageBackgroundColor: Colors.blue,
+                  selectedOption: selectedOption,
                 );
 
                 setState(() {

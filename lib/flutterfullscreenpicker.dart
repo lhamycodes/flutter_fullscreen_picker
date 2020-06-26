@@ -16,9 +16,12 @@ class FlutterFullScreenPicker {
 
     /// List of Select Options
     @required List<SelectOption> options,
-
+    
     /// Page title
     @required String appBarTitle,
+
+    /// Selected Option
+    SelectOption selectedOption,
 
     /// Page background Color, defaults to Colors.White
     Color pageBackgroundColor,
@@ -38,6 +41,7 @@ class FlutterFullScreenPicker {
         builder: (context) => FullScreenPicker(
           pageTitle: appBarTitle,
           selectOptions: options,
+          selectedOption: selectedOption,
           pageBackgroundColor: pageBackgroundColor,
           appBarTitleColor: appBarTitleColor,
           appBarIconsColor: appBarIconsColor,
