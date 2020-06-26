@@ -10,3 +10,7 @@ Features:
 - Return null or SelectOption when the openPicker is called
 - Performance update
 - Improve Stability
+
+## [1.0.1] - 26th June, 2020.
+- Update Readme
+- Format lib src

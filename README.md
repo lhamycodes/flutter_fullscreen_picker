@@ -4,14 +4,8 @@ A Flutter package that provides a full screen select-like widget, it also provid
 
 ## Installation
 
-Use the package manager [pub.dev](https://pub.dev/) to install **flutterfullscreenpicker**.
-
-```bash
-dependencies:
-  flutterfullscreenpicker: ^0.0.1
-
-and run flutter pub get
-```
+How to install it? [Follow Instructions](
+https://pub.dev/packages/flutterfullscreenpicker#-installing-tab-)
 
 ## Usage
 ```flutter

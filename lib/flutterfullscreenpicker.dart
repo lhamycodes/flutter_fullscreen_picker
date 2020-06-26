@@ -16,7 +16,7 @@ class FlutterFullScreenPicker {
 
     /// List of Select Options
     @required List<SelectOption> options,
-    
+
     /// Page title
     @required String appBarTitle,
 
