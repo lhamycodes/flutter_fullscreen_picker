@@ -14,3 +14,6 @@ Features:
 ## [1.0.1] - 26th June, 2020.
 - Update Readme
 - Format lib src
+
+## [1.0.2] - 26th June, 2020.
+- Fix typo in Readme
