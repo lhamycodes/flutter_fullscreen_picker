@@ -8,7 +8,7 @@ How to install it? [Follow Instructions](
 https://pub.dev/packages/flutterfullscreenpicker#-installing-tab-)
 
 ## Usage
-```flutter
+```dart
 import 'package:flutter/material.dart';
 import 'package:flutterfullscreenpicker/flutterfullscreenpicker.dart';
 
