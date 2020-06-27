@@ -57,6 +57,9 @@ class _HomeState extends State<Home> {
                   options: _countryList,
                   pageBackgroundColor: Colors.blue,
                   selectedOption: selectedOption,
+                  optionTextColor: Colors.white,
+                  appBarIconsColor: Colors.white,
+                  appBarTitleColor: Colors.white,
                 );
 
                 setState(() {
