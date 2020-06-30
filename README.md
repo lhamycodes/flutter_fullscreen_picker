@@ -1,13 +1,21 @@
 # flutterfullscreenpicker
 
-A Flutter package that provides a full screen select-like widget, it also provides search functionality 
+A Flutter package that provides a full screen select-like widget, it also provides search functionality
 
 ## Installation
 
-How to install it? [Follow Instructions](
-https://pub.dev/packages/flutterfullscreenpicker#-installing-tab-)
+How to install it? [Follow Instructions](https://pub.dev/packages/flutterfullscreenpicker#-installing-tab-)
+
+## Screenshots
+
+<p>
+    <img src="https://raw.githubusercontent.com/lhamycodes/flutter_fullscreen_picker/master/screenshots/1.png" width="200px" height="auto" hspace="20"/>
+    <img src="https://raw.githubusercontent.com/lhamycodes/flutter_fullscreen_picker/master/screenshots/2.png" width="200px" height="auto" hspace="20"/>
+    <img src="https://raw.githubusercontent.com/lhamycodes/flutter_fullscreen_picker/master/screenshots/3.png" width="200px" height="auto" hspace="20"/>
+</p>
 
 ## Usage
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutterfullscreenpicker/flutterfullscreenpicker.dart';
@@ -84,17 +92,12 @@ class _HomeState extends State<Home> {
 }
 ```
 
-## Screenshots
-<p>
-    <img src="https://raw.githubusercontent.com/lhamycodes/flutter_fullscreen_picker/master/screenshots/1.png" width="200px" height="auto" hspace="20"/>
-    <img src="https://raw.githubusercontent.com/lhamycodes/flutter_fullscreen_picker/master/screenshots/2.png" width="200px" height="auto" hspace="20"/>
-    <img src="https://raw.githubusercontent.com/lhamycodes/flutter_fullscreen_picker/master/screenshots/3.png" width="200px" height="auto" hspace="20"/>
-</p>
-
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)

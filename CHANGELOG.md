@@ -17,3 +17,6 @@ Features:
 
 ## [1.0.2] - 26th June, 2020.
 - Fix typo in Readme
+
+## [1.0.3] - 30th June, 2020.
+- Changed Some Padding's

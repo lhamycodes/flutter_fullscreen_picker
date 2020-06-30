@@ -63,7 +63,7 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
             Padding(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).padding.top,
-                bottom: 24,
+                bottom: 10,
               ),
               child: appBar(),
             ),
