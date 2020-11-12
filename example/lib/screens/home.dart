@@ -15,7 +15,10 @@ class _HomeState extends State<Home> {
   FlutterFullScreenPicker picker = FlutterFullScreenPicker();
 
   List<SelectOption> _countryList = [
-    SelectOption(display: "Nigeria", value: "NG"),
+    SelectOption(
+        display:
+            "Nigeria is a good country and I think I can say I'm proud of it",
+        value: "NG"),
     SelectOption(display: "South Africa", value: "SA"),
     SelectOption(display: "Rwanda", value: "RW"),
     SelectOption(display: "United States of America", value: "US"),
@@ -57,9 +60,14 @@ class _HomeState extends State<Home> {
                   options: _countryList,
                   pageBackgroundColor: Colors.blue,
                   selectedOption: selectedOption,
-                  optionTextColor: Colors.white,
+                  // optionTextColor: Colors.grey[300],
                   appBarIconsColor: Colors.white,
                   appBarTitleColor: Colors.white,
+                  optionTextStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: Colors.grey[50],
+                  ),
                 );
 
                 setState(() {

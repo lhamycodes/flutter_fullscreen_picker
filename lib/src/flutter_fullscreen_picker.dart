@@ -22,10 +22,14 @@ class FullScreenPicker extends StatefulWidget {
   /// Select option text Color, defaults to Colors.black
   final Color optionTextColor;
 
+  /// Select option text style, can be null
+  final TextStyle optionTextStyle;
+
   FullScreenPicker({
     @required this.pageTitle,
     @required this.selectOptions,
     this.selectedOption,
+    this.optionTextStyle,
     this.pageBackgroundColor = Colors.white,
     this.appBarTitleColor = Colors.black,
     this.appBarIconsColor = Colors.black,
@@ -119,12 +123,15 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text(
-                                selectList[index].display,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: widget.optionTextColor,
+                              Expanded(
+                                child: Text(
+                                  selectList[index].display,
+                                  style: widget.optionTextStyle ??
+                                      TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: widget.optionTextColor,
+                                      ),
                                 ),
                               ),
                               Icon(

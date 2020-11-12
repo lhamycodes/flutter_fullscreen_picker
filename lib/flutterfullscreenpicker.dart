@@ -34,6 +34,9 @@ class FlutterFullScreenPicker {
 
     /// Select option text Color, defaults to Colors.black
     Color optionTextColor,
+
+    /// Select option text Color, defaults to Colors.black
+    TextStyle optionTextStyle,
   }) async {
     return Navigator.push(
       context,
@@ -46,6 +49,7 @@ class FlutterFullScreenPicker {
           appBarTitleColor: appBarTitleColor,
           appBarIconsColor: appBarIconsColor,
           optionTextColor: optionTextColor,
+          optionTextStyle: optionTextStyle,
         ),
         fullscreenDialog: false,
       ),
