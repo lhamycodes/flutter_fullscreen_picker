@@ -25,6 +25,12 @@ class FullScreenPicker extends StatefulWidget {
   /// Select option text style, can be null
   final TextStyle optionTextStyle;
 
+  /// Do you have an 'Other' Option, defaults to false
+  final bool hasOtherOption;
+
+  /// The text to show in place of "Other"
+  final String otherOptionText;
+
   FullScreenPicker({
     @required this.pageTitle,
     @required this.selectOptions,
@@ -34,6 +40,8 @@ class FullScreenPicker extends StatefulWidget {
     this.appBarTitleColor = Colors.black,
     this.appBarIconsColor = Colors.black,
     this.optionTextColor = Colors.black,
+    this.hasOtherOption = false,
+    this.otherOptionText = "Other",
   });
 
   @override
@@ -41,7 +49,9 @@ class FullScreenPicker extends StatefulWidget {
 }
 
 class _FullScreenPickerState extends State<FullScreenPicker> {
-  List<SelectOption> selectList = List();
+  // List<SelectOption> selectList = List();
+  List<SelectOption> selectList = [];
+  TextEditingController otherOptionController = TextEditingController();
 
   @override
   void initState() {
@@ -52,29 +62,42 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: widget.pageBackgroundColor,
-      body: InkWell(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).padding.top,
-                bottom: 10,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: widget.pageBackgroundColor,
+        iconTheme: Theme.of(context)
+            .iconTheme
+            .copyWith(color: widget.appBarIconsColor),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+                showSearch(
+                  context: context,
+                  delegate: FullScreenPickerSearch(
+                    selectOptions: selectList,
+                  ),
+                ).then((value) => processSelection(value));
+              },
+              child: Icon(
+                Icons.search,
+                color: widget.appBarIconsColor,
               ),
-              child: appBar(),
             ),
-            Expanded(
-              child: buildOptions(),
-            ),
-          ],
+          ),
+        ],
+      ),
+      backgroundColor: widget.pageBackgroundColor,
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 20) +
+              EdgeInsets.only(
+                bottom: !widget.hasOtherOption
+                    ? 5
+                    : MediaQuery.of(context).padding.bottom,
+              ),
+          child: buildOptions(),
         ),
       ),
     );
@@ -96,30 +119,39 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
       );
     }
 
-    return Scrollbar(
-      child: ListView.builder(
-        padding: EdgeInsets.only(
-          bottom: 16 + MediaQuery.of(context).padding.bottom,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.pageTitle,
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+            color: widget.appBarTitleColor,
+          ),
         ),
-        itemCount: selectList.length,
-        physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              onSelect(selectList[index]);
-            },
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 8,
-                    right: 16,
-                  ),
-                  child: Row(
+        SizedBox(height: 10),
+        ListView.builder(
+          padding: EdgeInsets.only(
+            bottom: widget.hasOtherOption
+                ? 5
+                : 16 + MediaQuery.of(context).padding.bottom,
+          ),
+          itemCount: selectList.length,
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                onSelect(selectList[index]);
+              },
+              child: Column(
+                children: <Widget>[
+                  Row(
                     children: <Widget>[
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -147,88 +179,75 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget appBar() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(
-          height: AppBar().preferredSize.height,
-          child: Container(
-            padding: EdgeInsets.only(top: 8, left: 8, right: 8),
-            width: double.infinity,
-            height: AppBar().preferredSize.height - 8,
-            child: Material(
-              color: Colors.transparent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  InkWell(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(32.0),
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Icon(
-                        Platform.isIOS ? CupertinoIcons.back : Icons.arrow_back,
-                        color: widget.appBarIconsColor,
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(32.0),
-                    ),
-                    onTap: () {
-                      showSearch(
-                        context: context,
-                        delegate: FullScreenPickerSearch(
-                          selectOptions: selectList,
-                        ),
-                      ).then((value) => processSelection(value));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Icon(
-                        Icons.search,
-                        color: widget.appBarIconsColor,
-                      ),
-                    ),
-                  ),
                 ],
               ),
-            ),
-          ),
+            );
+          },
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 10, left: 24),
-          child: Text(
-            widget.pageTitle,
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: widget.appBarTitleColor,
-            ),
+        if (widget.hasOtherOption) ...[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10),
+              Input(
+                hintText: widget.otherOptionText,
+                label: "Hello",
+                validator: (val) {
+                  return null;
+                },
+                enabled: true,
+                textController: otherOptionController,
+                showLabel: false,
+                readOnly: false,
+                suffixIcon: Container(
+                  margin: EdgeInsets.all(3) + EdgeInsets.only(right: 2),
+                  child: ElevatedButton(
+                    child: Text("Okay"),
+                    onPressed: () => _otherOptionOkay(),
+                    style: TextButton.styleFrom(
+                      primary: widget.optionTextStyle?.color ??
+                          widget.optionTextColor,
+                    ),
+                  ),
+                ),
+                borderColor: Colors.black54,
+                fillColor: Color(0xFFEBF1FF),
+                enabledBorderColor: Colors.grey,
+                borderRadius: 6,
+              ),
+              SizedBox(height: 20),
+            ],
           ),
-        ),
+        ],
       ],
     );
   }
 
   void onSelect(SelectOption option) {
     Navigator.pop(context, option);
+  }
+
+  _otherOptionOkay() {
+    String val = otherOptionController.text;
+    if (val.trim() == "" || val.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Other option cannot be empty"),
+          duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    } else {
+      SelectOption opt = SelectOption(
+        display: val.trim(),
+        value: val.trim(),
+        isOtherOption: true,
+      );
+
+      onSelect(opt);
+    }
   }
 
   processSelection(String value) {

@@ -30,3 +30,7 @@ Features:
 
 - Fixed rendeflex issue
 - Added Option for Custom TextStyle
+
+## [1.0.5] - 14th April, 2021.
+
+- Add "Other Option" Support

@@ -1,13 +1,12 @@
 library flutterfullscreenpicker;
 
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 part 'models/select_option.dart';
 part 'src/flutter_fullscreen_picker.dart';
 part 'src/flutter_fullscreen_picker_search.dart';
+part 'src/input.dart';
 
 class FlutterFullScreenPicker {
   Future openPicker({
@@ -37,6 +36,12 @@ class FlutterFullScreenPicker {
 
     /// Select option text Color, defaults to Colors.black
     TextStyle optionTextStyle,
+
+    /// Do you have an 'Other' Option, defaults to false
+    bool hasOtherOption,
+
+    /// The text to show in place of "Other"
+    final String otherOptionText,
   }) async {
     return Navigator.push(
       context,
@@ -50,11 +55,23 @@ class FlutterFullScreenPicker {
           appBarIconsColor: appBarIconsColor,
           optionTextColor: optionTextColor,
           optionTextStyle: optionTextStyle,
+          hasOtherOption: hasOtherOption,
+          otherOptionText: otherOptionText ?? "Other",
         ),
         fullscreenDialog: false,
       ),
     ).then((value) {
       if (value != null) {
+        if (value.isOtherOption) {
+          SelectOption opt = options.firstWhere(
+            (item) => item.display.toLowerCase() == value.display.toLowerCase(),
+            orElse: () => null,
+          );
+
+          if (opt == null) {
+            options.add(value);
+          }
+        }
         return value;
       } else {
         return null;
