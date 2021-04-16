@@ -52,8 +52,13 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(height: 10),
-            RaisedButton(
-              child: Text("Choose Country"),
+            ElevatedButton(
+              child: Text(
+                "Choose Country",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
               onPressed: () async {
                 var res = await picker.openPicker(
                   appBarTitle: "Select Country",
@@ -76,7 +81,9 @@ class _HomeState extends State<Home> {
                   selectedOption = res;
                 });
               },
-              color: Colors.white,
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+              ),
             ),
           ],
         ),

@@ -49,7 +49,6 @@ class FullScreenPicker extends StatefulWidget {
 }
 
 class _FullScreenPickerState extends State<FullScreenPicker> {
-  // List<SelectOption> selectList = List();
   List<SelectOption> selectList = [];
   TextEditingController otherOptionController = TextEditingController();
 
