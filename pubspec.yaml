@@ -1,6 +1,6 @@
 name: flutterfullscreenpicker
 description: A Flutter package that provides a full screen select-like widget, it also provides search functionality
-version: 1.0.5
+version: 1.1.0
 homepage: https://github.com/lhamycodes/flutter_fullscreen_picker
 
 environment:

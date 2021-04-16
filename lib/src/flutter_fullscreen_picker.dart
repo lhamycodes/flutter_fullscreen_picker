@@ -188,7 +188,7 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 10),
-              Input(
+              PickerInput(
                 hintText: widget.otherOptionText,
                 label: "Hello",
                 validator: (val) {

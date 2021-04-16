@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 part 'models/select_option.dart';
 part 'src/flutter_fullscreen_picker.dart';
 part 'src/flutter_fullscreen_picker_search.dart';
-part 'src/input.dart';
+part 'src/picker_input.dart';
 
 class FlutterFullScreenPicker {
   Future openPicker({

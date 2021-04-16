@@ -34,3 +34,7 @@ Features:
 ## [1.0.5] - 14th April, 2021.
 
 - Add "Other Option" Support
+
+## [1.1.0] - 16th April, 2021.
+
+- Replace Widget "Input" with "Picker Input" to avoid naming clash

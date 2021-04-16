@@ -1,6 +1,6 @@
 part of flutterfullscreenpicker;
 
-class Input extends StatelessWidget {
+class PickerInput extends StatelessWidget {
   final Widget prefixIcon;
   final Widget suffixIcon;
   final String initialValue;
@@ -35,7 +35,7 @@ class Input extends StatelessWidget {
   final TextAlign textAlign;
   final double borderRadius;
 
-  Input({
+  PickerInput({
     @required this.label,
     @required this.hintText,
     this.initialValue,
