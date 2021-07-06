@@ -1,11 +1,11 @@
 part of flutterfullscreenpicker;
 
-class FullScreenPickerSearch extends SearchDelegate<String> {
-  final List<SelectOption> selectOptions;
+class FullScreenPickerSearch extends SearchDelegate<String?> {
+  final List<SelectOption>? selectOptions;
 
   FullScreenPickerSearch({this.selectOptions});
 
-  String selectedOption;
+  String? selectedOption;
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -31,11 +31,9 @@ class FullScreenPickerSearch extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     List suggestionList =
-        selectOptions.where((sen) => sen.display == selectedOption).toList();
+        selectOptions!.where((sen) => sen.display == selectedOption).toList();
 
-    if (suggestionList.isEmpty ||
-        suggestionList == null ||
-        suggestionList.length < 1)
+    if (suggestionList.isEmpty || suggestionList.length < 1)
       return Center(
         child: Text(
           "No Result found",
@@ -61,8 +59,8 @@ class FullScreenPickerSearch extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = query.isEmpty
-        ? selectOptions
-        : selectOptions
+        ? selectOptions!
+        : selectOptions!
             .where(
               (opt) => opt.display.toString().toLowerCase().contains(
                     query.toLowerCase(),
@@ -77,7 +75,7 @@ class FullScreenPickerSearch extends SearchDelegate<String> {
           selectedOption = suggestionList[i].display;
           close(context, suggestionList[i].display);
         },
-        title: Text(suggestionList[i].display),
+        title: Text(suggestionList[i].display!),
       ),
     );
   }

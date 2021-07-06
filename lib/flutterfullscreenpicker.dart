@@ -1,5 +1,6 @@
 library flutterfullscreenpicker;
 
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,37 +12,37 @@ part 'src/picker_input.dart';
 class FlutterFullScreenPicker {
   Future openPicker({
     /// BuildContext context
-    @required BuildContext context,
+    required BuildContext context,
 
     /// List of Select Options
-    @required List<SelectOption> options,
+    required List<SelectOption> options,
 
     /// Page title
-    @required String appBarTitle,
+    required String appBarTitle,
 
     /// Selected Option
-    SelectOption selectedOption,
+    SelectOption? selectedOption,
 
     /// Page background Color, defaults to Colors.White
-    Color pageBackgroundColor,
+    Color? pageBackgroundColor,
 
     /// Appbar title Color, defaults to Colors.black
-    Color appBarTitleColor,
+    Color? appBarTitleColor,
 
     /// Appbar Icons Color, defaults to Colors.black
-    Color appBarIconsColor,
+    Color? appBarIconsColor,
 
     /// Select option text Color, defaults to Colors.black
-    Color optionTextColor,
+    Color? optionTextColor,
 
     /// Select option text Color, defaults to Colors.black
-    TextStyle optionTextStyle,
+    TextStyle? optionTextStyle,
 
     /// Do you have an 'Other' Option, defaults to false
-    bool hasOtherOption,
+    bool? hasOtherOption,
 
     /// The text to show in place of "Other"
-    final String otherOptionText,
+    final String? otherOptionText,
   }) async {
     return Navigator.push(
       context,
@@ -63,9 +64,9 @@ class FlutterFullScreenPicker {
     ).then((value) {
       if (value != null) {
         if (value.isOtherOption) {
-          SelectOption opt = options.firstWhere(
-            (item) => item.display.toLowerCase() == value.display.toLowerCase(),
-            orElse: () => null,
+          SelectOption? opt = options.firstWhereOrNull(
+            (item) =>
+                item.display!.toLowerCase() == value.display.toLowerCase(),
           );
 
           if (opt == null) {

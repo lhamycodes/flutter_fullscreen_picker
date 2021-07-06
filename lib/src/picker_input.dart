@@ -1,27 +1,27 @@
 part of flutterfullscreenpicker;
 
 class PickerInput extends StatelessWidget {
-  final Widget prefixIcon;
-  final Widget suffixIcon;
-  final String initialValue;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final String? initialValue;
   final TextInputType inputType;
-  final TextEditingController textController;
+  final TextEditingController? textController;
   final String label;
   final String hintText;
   final bool obscureText;
   final bool enabled;
   final bool readOnly;
   final bool filled;
-  final int maxLines;
+  final int? maxLines;
   final int minLines;
   final TextInputAction keyboardAction;
-  final FocusNode focusNode;
-  final Function validator;
-  final Function onSaved;
-  final Function onTap;
-  final Function onChanged;
-  final Function onFieldSubmitted;
-  final Function onEditComplete;
+  final FocusNode? focusNode;
+  final Function? validator;
+  final Function? onSaved;
+  final Function? onTap;
+  final Function? onChanged;
+  final Function? onFieldSubmitted;
+  final Function? onEditComplete;
   final Color borderColor,
       enabledBorderColor,
       errorBorderColor,
@@ -31,13 +31,13 @@ class PickerInput extends StatelessWidget {
       errorTextColor,
       hintTextColor;
   final bool showLabel;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final TextAlign textAlign;
   final double borderRadius;
 
   PickerInput({
-    @required this.label,
-    @required this.hintText,
+    required this.label,
+    required this.hintText,
     this.initialValue,
     this.textController,
     this.inputType = TextInputType.text,
@@ -148,14 +148,14 @@ class PickerInput extends StatelessWidget {
       readOnly: readOnly,
       keyboardType: minLines > 1 ? TextInputType.multiline : inputType,
       textInputAction: keyboardAction,
-      validator: validator,
-      onSaved: onSaved,
+      validator: validator as String? Function(String?)?,
+      onSaved: onSaved as void Function(String?)?,
       focusNode: focusNode,
-      onTap: onTap,
-      onChanged: onChanged,
-      onFieldSubmitted: onFieldSubmitted,
+      onTap: onTap as void Function()?,
+      onChanged: onChanged as void Function(String)?,
+      onFieldSubmitted: onFieldSubmitted as void Function(String)?,
       controller: textController,
-      onEditingComplete: onEditComplete,
+      onEditingComplete: onEditComplete as void Function()?,
       maxLines: obscureText ? 1 : maxLines,
       minLines: minLines,
     );

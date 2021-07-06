@@ -28,7 +28,7 @@ Features:
 
 ## [1.0.4] - 12th November, 2020.
 
-- Fixed rendeflex issue
+- Fixed renderflex issue
 - Added Option for Custom TextStyle
 
 ## [1.0.5] - 14th April, 2021.
@@ -38,3 +38,7 @@ Features:
 ## [1.1.0] - 16th April, 2021.
 
 - Replace Widget "Input" with "Picker Input" to avoid naming clash
+
+## [2.0.0-prerelease] - 6th July, 2021.
+
+- Migrate Package to support null-safety

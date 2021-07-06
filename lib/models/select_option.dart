@@ -1,7 +1,7 @@
 part of flutterfullscreenpicker;
 
 class SelectOption {
-  String display;
+  String? display;
   dynamic value;
   bool isOtherOption;
 
