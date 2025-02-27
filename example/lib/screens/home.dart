@@ -4,14 +4,14 @@ import 'package:flutterfullscreenpicker/flutterfullscreenpicker.dart';
 class Home extends StatefulWidget {
   final String title;
 
-  const Home({Key key, this.title}) : super(key: key);
+  const Home({Key? key, required this.title}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  SelectOption selectedOption;
+  SelectOption? selectedOption;
   FlutterFullScreenPicker picker = FlutterFullScreenPicker();
 
   List<SelectOption> _countryList = [
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.white,
+                backgroundColor: Colors.white,
               ),
             ),
           ],

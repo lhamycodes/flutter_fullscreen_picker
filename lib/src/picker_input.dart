@@ -81,12 +81,6 @@ class PickerInput extends StatelessWidget {
           ? InputDecoration.collapsed(
               hintText: hintText,
               enabled: enabled,
-              floatingLabelBehavior: FloatingLabelBehavior.auto,
-              // border: InputBorder.none,
-              // errorStyle: TextStyle(
-              //   color: errorTextColor,
-              //   fontSize: 14,
-              // ),
             ).copyWith(
               errorStyle: TextStyle(color: errorTextColor, fontSize: 14),
             )

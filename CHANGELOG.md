@@ -42,3 +42,7 @@ Features:
 ## [2.0.0-prerelease] - 6th July, 2021.
 
 - Migrate Package to support null-safety
+
+## [2.0.0] - 27th February, 2025.
+
+- Migrate package to stable release

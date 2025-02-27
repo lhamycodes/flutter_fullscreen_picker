@@ -190,7 +190,7 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
               SizedBox(height: 10),
               PickerInput(
                 hintText: widget.otherOptionText,
-                label: "Hello",
+                label: widget.otherOptionText,
                 validator: (val) {
                   return null;
                 },
@@ -204,7 +204,7 @@ class _FullScreenPickerState extends State<FullScreenPicker> {
                     child: Text("Okay"),
                     onPressed: () => _otherOptionOkay(),
                     style: TextButton.styleFrom(
-                      primary: widget.optionTextStyle?.color ??
+                      backgroundColor: widget.optionTextStyle?.color ??
                           widget.optionTextColor,
                     ),
                   ),
